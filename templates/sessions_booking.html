@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .navbar a, .dropdown .dropbtn {
+        float: left;
+        font-size: 30px;
+        font-family: "Calibri";
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 30px;  
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: "Calibri";
+        margin: 0;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    h1 {
+        font-size: 75px;
+        font-family: "Calibri";
+        color: black;
+    }
+
+    p {
+        font-size: 30px;
+        font-family: "Calibri";
+        color: black;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/index">Home</a>
+    <a href="/about_us">About Us</a>
+    <a href="/contact_us">Contact Us</a>
+    <a href="/learning_resources_tools">Learning resources/tools</a>
+    <a href="/gamified_learning">Gamified learning</a>
+    <a href="/quizzes">Quizzes</a>
+    <a href="/learner_progress">Learner progress</a>
+    {% if logged_in == false: %}
+    <a href="/login">Log In</a>
+    <a href="/register">Register</a>
+    {% else: %}
+    <a href="/logout">Log Out</a>
+    {% endif %}
+</div>
+
+<br>
+<br>
+<h1><b>Book a face-to-face session</b></h1>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <p style="font-size:30px; font-family:'Calibri'; color:rgb(255, 255, 255); background-color:red;">{{ message }}</p>
+        <br>
+        <br>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<br>
+<p>Book a face-to-face session with one of our tutors at a time and date with the subject of your choice. When entering the date for the session, please enter the day, month and year as numbers in the DD/MM/YYYY format</p>
+<br>
+<p>You can enter a date of your choice and any of the times given below in the dropdown options for the session and when you book the session, we will allocate a tutor for your session based on their availability and you will be notified once a tutor has been assigned to take your session at your given date and time</p>
+<br>
+<p>Sessions will be free at no given price</p>
+<br>
+<br>
+<br>
+<form action="{{ url_for('sessions_booking') }}" method="POST">
+    <label style="font-size:30px; font-family:'Calibri'">
+        Session time:
+    </label>
+    <select name="session_time" style="width:200px; font-size:30px; font-family: 'Calibri'">
+        <option style="width:100px;">09:00 - 10:00</option>
+        <option style="width:100px;">10:00 - 11:00</option>
+        <option style="width:100px;">11:00 - 12:00</option>
+        <option style="width:100px;">12:00 - 13:00</option>
+        <option style="width:100px;">13:00 - 14:00</option>
+        <option style="width:100px;">14:00 - 15:00</option>
+        <option style="width:100px;">15:00 - 16:00</option>
+        <option style="width:100px;">16:00 - 17:00</option>
+        <option style="width:100px;">17:00 - 18:00</option>
+        <option style="width:100px;">18:00 - 19:00</option>
+        <option style="width:100px;">19:00 - 20:00</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <label style="font-size:30px; font-family:'Calibri'">
+        Subject:
+    </label>
+    <select name="subject" style="width:300px; font-size:30px; font-family: 'Calibri'">
+        <option style="width:100px;">English</option>
+        <option style="width:100px;">Maths</option>
+        <option style="width:100px;">Science</option>
+        <option style="width:100px;">History</option>
+        <option style="width:100px;">Geography</option>
+        <option style="width:100px;">Spanish</option>
+        <option style="width:100px;">French</option>
+        <option style="width:100px;">German</option>
+        <option style="width:100px;">Religious Studies</option>
+        <option style="width:100px;">Business Studies</option>
+        <option style="width:100px;">Computer Science</option>
+        <option style="width:100px;">Music</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <label style="font-size:30px; font-family:'Calibri'">Session date:</label>
+    <input type="text" class="input-box" placeholder="DD" name="DD" style="width:100px; font-size:30px; font-family:'Calibri'" required>
+    /
+    <input type="text" class="input-box" placeholder="MM" name="MM" style="width:100px; font-size:30px; font-family:'Calibri'" required>
+    /
+    <input type="text" class="input-box" placeholder="YYYY" name="YYYY" style="width:100px; font-size:30px; font-family:'Calibri'" required>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary btn-block btn-large" style="font-size:30px; font-family:'Calibri'">Book session</button>
+</form>
+<p></p>
+<br>
+<p></p>
+
+</body>
+</html>

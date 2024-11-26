@@ -1,0 +1,70 @@
+<div class="box"></div>
+    <h1>Register</h1>
+    <br>
+    <form method="post">
+        <label>Name:</label>
+        <input type="text" class="input-box" name="name" placeholder="Name" style="width:500px; font-size:30px; font-family:'Calibri'" required="required" />
+        <br>
+        <br>
+        <label>Email:</label>
+        <input type="email" class="input-box" name="email" placeholder="Email" style="width:500px; font-size:30px; font-family:'Calibri'" required="required" />
+        <br>
+        <br>
+        <label>Password:</label>
+        <input type="password" class="input-box" name="password" placeholder="Password" style="width:500px; font-size:30px; font-family:'Calibri'" required="required" />
+        <br>
+        <br>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="font-size:30px; font-family:'Calibri'">Register</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{{ url_for('login') }}" style="font-size:30px;">Login</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button>
+        <a href="{{ url_for('index') }}" style="text-decoration:none; font-size:30px; font-family:'Calibri'">Back</a>
+    </button>
+</div>
+<body>
+    <style>
+        h1 {
+            color:black;
+            font-family: "Calibri";
+            font-size:75px;
+        }
+
+        a:link {
+            color:black;
+            font-family: "Calibri";
+            font-size:30px;
+        }
+
+        p {
+            font-size: 30px;
+            font-family: "Calibri";
+            color: black;
+        }
+
+        .input-box {
+            height:50px;
+        }
+
+        button {
+            font-family: "Calibri";
+        }
+
+        label {
+            font-size:30px;
+            font-family: "Calibri";
+            color:black;
+        }
+
+    </style>
+</body>

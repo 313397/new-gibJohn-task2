@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .navbar a, .dropdown .dropbtn {
+        float: left;
+        font-size: 30px;
+        font-family: "Calibri";
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 30px;  
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: "Calibri";
+        margin: 0;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    h1 {
+        font-size: 75px;
+        font-family: "Calibri";
+        color: black;
+    }
+
+    p {
+        font-size: 30px;
+        font-family: "Calibri";
+        color: black;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/index">Home</a>
+    <a href="/about_us">About Us</a>
+    <a href="/contact_us">Contact Us</a>
+    <a href="/sessions_booking">Book a face-to-face session</a>
+    <a href="/gamified_learning">Gamified learning</a>
+    <a href="/quizzes">Quizzes</a>
+    <a href="/learner_progress">Learner progress</a>
+    {% if logged_in == false: %}
+    <a href="/login">Log In</a>
+    <a href="/register">Register</a>
+    {% else: %}
+    <a href="/logout">Log Out</a>
+    {% endif %}
+</div>
+
+<br>
+<br>
+<h1><b>Learning resources and tools</b></h1>
+<br>
+<p><b>English:</b></p>
+<br>
+<p><b>Maths:</b></p>
+<br>
+<p><b>Science:</b></p>
+<br>
+<p><b>History:</b></p>
+<br>
+<p><b>Geography:</b></p>
+<br>
+<p><b>Spanish:</b></p>
+<br>
+<p><b>French:</b></p>
+<br>
+<p><b>German:</b></p>
+<br>
+<p><b>Religious Studies:</b></p>
+<br>
+<p><b>Business Studies:</b></p>
+<br>
+<p><b>Computer Science:</b></p>
+<br>
+<p><b>Music:</b></p>
+
+</body>
+</html>
